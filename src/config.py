@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Configuration module."""
 
+import logging
 import os
 from logging import StreamHandler
 
@@ -19,29 +20,29 @@ LOG_CONFIG = {
     'loggers': {
         'root': {
             'handlers': ['console', 'telegram'],
-            'level': 'DEBUG',
+            'level': logging.DEBUG,
         },
     },
     'handlers': {
         'console': {
             'class': f'{StreamHandler.__module__}.{StreamHandler.__qualname__}',
             'formatter': 'console_formatter',
-            'level': 'DEBUG',
+            'level': logging.DEBUG,
         },
         'telegram': {
             'class': f'{Handler.__module__}.{Handler.__qualname__}',
             'token_id': TOKEN_ID,
             'chat_ids': CHAT_IDS,
             'formatter': 'telegram_formatter',
-            'level': 'WARNING',
+            'level': logging.WARNING,
         },
     },
     'formatters': {
+        'console_formatter': {
+            'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        },
         'telegram_formatter': {
             'class': f'{Formatter.__module__}.{Formatter.__qualname__}',
         },
-        'console_formatter': {
-            'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        }
     },
 }
