@@ -5,4 +5,5 @@ from src import LOG_CONFIG
 config.dictConfig(LOG_CONFIG)
 logger = getLogger(__name__)
 
-logger.info('TEST')
+logger.info('Some information')
+logger.warning('Important information')

@@ -16,9 +16,11 @@ CHAT_IDS = os.getenv('CHAT_IDS').split(',')
 
 LOG_CONFIG = {
     'version': 1,
-    'root': {
-        'handlers': ['console', 'telegram'],
-        'level': 'DEBUG',
+    'loggers': {
+        'root': {
+            'handlers': ['console', 'telegram'],
+            'level': 'DEBUG',
+        },
     },
     'handlers': {
         'console': {
@@ -31,7 +33,7 @@ LOG_CONFIG = {
             'token_id': TOKEN_ID,
             'chat_ids': CHAT_IDS,
             'formatter': 'telegram_formatter',
-            'level': 'DEBUG',
+            'level': 'WARNING',
         },
     },
     'formatters': {
